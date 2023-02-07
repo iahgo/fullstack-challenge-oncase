@@ -1,0 +1,78 @@
+table {
+  margin: 0 auto;
+  width: 50%;
+  border-collapse: collapse;
+  margin-top: 50px;
+  height: 100px;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+form {
+  background-color:#41B8E2;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  width: 150px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  width: 90px;
+  height: 30px;
+  background-color:#41B8E2 ;
+  color: white;
+  border: 1.5px solid white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+button[type="button"] {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  /* width: 50%;
+  max-width: 800px;
+  max-height: 200px; */
+  padding: 20px;
+  margin: 20px;
+}
+
+.table {
+  width: 49%;
+  height: 50%;
+} 
+
+.doughnut-chart {
+  margin: 30px;
+  width: 50%;
+  max-width: 500px;
+  max-height: 300px;
+}
+
+.info {
+  text-align: center;
+}
+
+.total {
+  margin: 40px;
+}
