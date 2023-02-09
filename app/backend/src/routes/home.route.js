@@ -1,6 +1,6 @@
 const express = require('express');
-const { peopleController } = require('../controllers')
-const { formValidation } = require('../middlewares/formValidation.middleware')
+const { peopleController } = require('../controllers');
+const { formValidation } = require('../middlewares/formValidation.middleware');
 
 const route = express.Router();
 route.get('/', peopleController.findAll);

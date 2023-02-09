@@ -1,92 +1,88 @@
-const { peopleModel } = require('../models/index');
-const {
-  findAll,
-  findById,
-  insertPerson,
-  deletePerson,
-  updatePerson,
-} = require('../services/people.service');
-import {jest} from '@jest/globals'
+const { expect } = require('chai');
+const sinon = require('sinon');
+const peopleService = require('../services/people.service');
+const peopleModel = require('../models/people.model');
 
+const mocks = require('./mocks/people.mock');
 
-describe('People Service', () => {
-  beforeEach(() => {
-    peopleModel.findAll = jest.fn().mockResolvedValue([
-      { id: 1, firstName: 'Iahgo', lastName: 'Barros', participation: 80 },
-      { id: 2, firstName: 'Raniel', lastName: 'Silva', participation: 70 },
-    ]);
-    peopleModel.findById = jest.fn().mockResolvedValue({
-      id: 1, firstName: 'Iahgo', lastName: 'Barros', participation: 80,
-    });
-    peopleModel.insertPerson = jest.fn().mockResolvedValue({
-      id: 3, firstName: 'Iandé', lastName: 'Bailey', participation: 60,
-    });
-    peopleModel.deletePerson = jest.fn().mockResolvedValue(1);
-    peopleModel.updatePerson = jest.fn().mockResolvedValue({
-      id: 1, firstName: 'Iahgo', lastName: 'Barros', participation: 90,
+describe('Testa o Service', function () {
+  afterEach(sinon.restore);
+
+  describe('Testa o findAll', function () {
+    it('Retorna todas as pessoas', async function () {
+      sinon.stub(peopleModel, 'findAll').resolves(mocks.people);
+      const result = await peopleService.findAll();
+      expect(result.message).to.deep.equal(mocks.people);
     });
   });
 
-  describe('findAll', () => {
-    it('should return a list of people', async () => {
-      const result = await findAll();
-      expect(result).toEqual({
-        type: null,
-        message: [
-          { id: 1, firstName: 'Iahgo', lastName: 'Barros', participation: 80 },
-          { id: 2, firstName: 'Raniel', lastName: 'Silva', participation: 70 },
-        ],
-      });
+  describe('Testa o findById', function () {
+    it('Retorna uma pessoa', async function () {
+      sinon.stub(peopleModel, 'findById').resolves(mocks.people[1]);
+      const result = await peopleService.findById(1);
+      expect(result.message).to.deep.equal(mocks.people[1]);
+    });
+    it('Ao digitar id errado apresenta erro', async function () {
+      sinon.stub(peopleModel, 'findById').resolves([]);
+      const result = await peopleService.findById(9);
+      expect(result.message).to.deep.equal('person not found');
     });
   });
 
-  describe('findById', () => {
-    it('should return a person by id', async () => {
-      const result = await findById(1);
-      expect(result).toEqual({
-        type: null,
-        message: { id: 1, firstName: 'Iahgo', lastName: 'Barros', participation: 80 },
+  describe('Testa o insertPerson', function () {
+    it('Insere uma pessoa', async function () {
+      sinon.stub(peopleModel, 'insertPerson').resolves(mocks.returnPeople);
+      const result = await peopleService.insertPerson({
+        firstName: 'oncase',
+        lastName: 'challenge',
+        participation: 10,
       });
-    });
-
-    it('should return an error message if the person is not found', async () => {
-      peopleModel.findById = jest.fn().mockResolvedValue(null);
-      const result = await findById(3);
-      expect(result).toEqual({
-        type: 'PERSON',
-        message: 'person not found',
-      });
+      expect(result).to.deep.equal(mocks.returnPeople);
     });
   });
 
-  describe('insertPerson', () => {
-    it('should insert a new person', async () => {
-      const result = await insertPerson({
-        firstName: 'Jim',
-        lastName: 'Smith',
-        participation: 60,
-      });
-      expect(result).toEqual({
-        id: 3,
-        firstName: 'Jim',
-        lastName: 'Smith',
-        participation: 60,
-      });
+  describe('Testa o deletePerson', function () {
+    it('Deleta uma pessoa', async function () {
+      sinon.stub(peopleModel, 'findById').resolves(mocks.people[1]);
+      sinon.stub(peopleModel, 'deletePerson').resolves(mocks.people[1]);
+      const result = await peopleService.deletePerson(1);
+  
+      expect(result.message).to.deep.equal(mocks.people[1]);
+    });
+    it('Ao digitar id errado apresenta erro', async function () {
+      sinon.stub(peopleModel, 'findById').resolves([]);
+      const result = await peopleService.deletePerson(9);
+      expect(result.message).to.deep.equal('person not found');
     });
   });
-  describe('deletePerson', () => {
-    it('should delete a person', async () => {
-      const result = await deletePerson({
-        firstName: 'Jim',
-        lastName: 'Smith',
-        participation: 60,
+
+  describe('Testa o updatePerson', function () {
+    it('Atualiza uma pessoa', async function () {
+      sinon.stub(peopleModel, 'findById').resolves(mocks.people[1]);
+      sinon.stub(peopleModel, 'updatePerson').resolves({
+        firstName: 'oncase',
+        lastName: 'challenge',
+        participation: 10,
       });
-      expect(result).toEqual({
-        id: 3,
-        firstName: 'Jim',
-        lastName: 'Smith',
-        participation: 60,
+      const result = await peopleService.updatePerson(1, {
+        firstName: 'oncase',
+        lastName: 'challenge',
+        participation: 10,
       });
+      expect(result.message).to.deep.equal({
+        firstName: 'oncase',
+        lastName: 'challenge',
+        participation: 10,
+      });
+    });
+    it('Ao digitar id errado apresenta erro', async function () {
+      sinon.stub(peopleModel, 'findById').resolves([]);
+      const result = await peopleService.updatePerson(9, {
+        firstName: 'oncase',
+        lastName: 'challenge',
+        participation: 10,
+      });
+      expect(result.message).to.deep.equal('person not found');
     });
   });
 });

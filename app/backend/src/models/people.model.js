@@ -13,26 +13,28 @@ const findById = async (id) => {
   );
   return person;
 };
-const insertPerson =  async (firstName, lastName, participation) => {
+const insertPerson = async (firstName, lastName, participation) => {
   const insert = await connection.execute(
-`INSERT INTO db.people (firstName, lastName, participation) VALUES (?, ?, ?)`, [firstName, lastName, participation]
-  )
+    'INSERT INTO db.people (firstName, lastName, participation)'
+    + 'VALUES (?, ?, ?)', [firstName, lastName, participation],
+  );
   return insert;
-}
+};
 
 const deletePerson = async (id) => {
   const deleted = await connection.execute(
-    `DELETE FROM db.people WHERE id = ?`, [id], 
+    'DELETE FROM db.people WHERE id = ?', [id], 
   );
   return deleted;
-}
+};
 
 const updatePerson = async (id, firstName, lastName, participation) => {
   const updated = await connection.execute(
-    `UPDATE db.people SET firstName = ?, lastName = ?, participation = ? WHERE id = ? `, [firstName, lastName, participation, id]
+    'UPDATE db.people SET firstName = ?, lastName = ?, participation = ? WHERE id = ? ',
+    [firstName, lastName, participation, id],
   );
   return updated;
-}
+};
 module.exports = {
   findAll,
   findById,

@@ -43,7 +43,7 @@ cd fullstack-challenge-oncase
 - 3000: frontend
 - 3001: backend
 - 3002: database
-- É necessário subir o container 'app' completo, o container possui healthchecks para assegurar que se está operacional ou não.
+- É necessário subir o container 'app' completo, o container possui healthchecks para assegurar se está operacional ou não.
   
 
 ```bash
