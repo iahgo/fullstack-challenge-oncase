@@ -1,151 +1,70 @@
+# Getting Started with Create React App
 
-# Projeto CRUD Fullstack
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-  
-  
-  
-  
+## Available Scripts
 
-## Tecnologias
+In the project directory, you can run:
 
-  
+### `npm start`
 
-- Node.Js
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-- React
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-- SQL
+### `npm test`
 
-- Docker
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- Tests
+### `npm run build`
 
-  
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Instalação
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### Clone este repositório
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-  
+### `npm run eject`
 
-```bash
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-  
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-git clone https://github.com/iahgo/fullstack-challenge-oncase.git
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-  
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-```
+## Learn More
 
-  
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-  
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Navegue até a pasta do projeto
+### Code Splitting
 
-  
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-  
+### Analyzing the Bundle Size
 
-```bash
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-  
+### Making a Progressive Web App
 
-cd fullstack-challenge-oncase
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-  
+### Advanced Configuration
 
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-  
+### Deployment
 
-  
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### Inicie o Docker Compose
+### `npm run build` fails to minify
 
-É necessário possuir Docker instalado, se não possuir pode instalar através desse link: https://docs.docker.com/engine/install/
-
-#### Atenção:
-
-- Este comando irá iniciar todas as configurações necessárias e popular o banco de dados.
-
-- Certifique-se de não ter nenhum serviço rodando nas portas: 3000, 3001 e 3002.
-
-- 3000: frontend
-
-- 3001: backend
-
-- 3002: database
-
-- É necessário subir o container 'app' completo, o container possui healthchecks para assegurar se está operacional ou não.
-
-  
-
-```bash
-
-  
-
-npm run compose:up
-
-  
-
-```
-
-  
-
-- Este comando pode demorar um pouco para ser executado, pois nele está sendo instalado todas as dependências do projeto.
-
-  
-
-  
-
-## Uso
-
-  
-
-  
-
-A aplicação estará disponível em http://localhost:3000.
-
-  
-  
-
-### Encerrar container docker
-
-- Você pode derrubar o container docker através do comando dentro do diretório 'fullstack-challenge-oncase'
-
-```bash
-
-  
-
-npm run compose:down
-
-  
-
-```
-
-## Testes
-###  Backend
-- Acesse o diretório 'backend'
-#### Para testar a aplicação:
- ```bash
-
-  
-
-npm test
-
-  
-
-```
-
-#### Para checar a cobertura de testes:
- ```bash
-
-  
-
-npm run test:coverage
-
-  
-
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
