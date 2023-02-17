@@ -2,7 +2,7 @@
 # Projeto CRUD Fullstack
 
   
-  ![alt text]('./fotoapponcase.png)
+  ![alt text](./fotoapponcase.png)
   
   
 
